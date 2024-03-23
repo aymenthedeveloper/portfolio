@@ -125,46 +125,51 @@ main .hero p {
 }
 
 /* projects section */
-
-main .projects {
+.projects {
   min-height: 90vh;
-  > h2{
-    font-size: var(--fs-h2);
-  }
+  
+}
+.projects > h2{
+  font-size: var(--fs-h2);
+  line-height: 120%;
 }
 
-main .projects .project {
+.projects .project {
   position: relative;
-  & h3 {
-    font-size: var(--fs-h3);
-    padding-top: 1.5rem;
-    margin-bottom: .5rem;
-  }
-  & p {
-    color: var(--accent-text-clr);
-    max-width: 40ch;
-    margin-top: 0;
- 
-  }
-  & a {
-    border: 1px solid var(--text-clr);
-    padding: 6px 10px;
-    border-radius: 2rem;
-    margin-right: 4px;
-  }
-  & .demo {
-    background-color: var(--text-clr);
-    color: var(--main-bg-clr);
-    display: inline-flex;
-    align-items: center;
-    padding-left: 13px;
-    width: fit-content;
-  }
-  & .demo svg {
-    height: 20px;
-    fill: var(--main-bg-clr);
-  }
+  margin-top: 20px;
+  padding-top: 10px;
 }
+.projects .project:last-child{
+  padding-bottom: 20px;
+}
+.projects .project h3 {
+  font-size: var(--fs-h3);
+  margin-block: 0 .75rem;
+}
+.projects .project p {
+  color: var(--accent-text-clr);
+  max-width: 40ch;
+  margin-block-start: 0;
+}
+.projects .project a {
+  border: 1px solid var(--text-clr);
+  padding: 6px 10px;
+  border-radius: 2rem;
+  margin-right: 4px;
+}
+.projects .project .demo {
+  background-color: var(--text-clr);
+  color: var(--main-bg-clr);
+  display: inline-flex;
+  align-items: center;
+  padding-left: 13px;
+  width: fit-content;
+}
+.projects .project .demo svg {
+  height: 20px;
+  fill: var(--main-bg-clr);
+}
+
 
 main .projects .project::before {
   content: "";
@@ -241,24 +246,32 @@ footer {
 
 /* media quries */
 @media (width > 550px) {
-  main .projects .project{
+  .projects .project{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding-block: 24px;
-    & h3{
-      grid-column: span 2;
-      grid-row: span 2;
-      margin-block: 0;
-      padding-top: 0;
-      align-self: center;
-    }
-    & p{
-      grid-column: span 2;
-      max-width: 40ch;
-    }
-    & a{
-      grid-column: span 2;
-    }
+    margin-block: 0;
+  }
+  .projects .project h3{
+    grid-column: span 2;
+    grid-row: span 2;
+    margin-block: 0;
+    padding-top: 0;
+    align-self: center;
+  }
+  .projects .project h3{
+    grid-column: span 2;
+    grid-row: span 2;
+    margin-block: 0;
+    padding-top: 0;
+    align-self: center;
+  }
+  .projects .project  p{
+    grid-column: span 2;
+    max-width: 40ch;
+  }
+  .projects .project a{
+    grid-column: span 2;
   }
 }
 @media (width > 1024px){
@@ -275,13 +288,10 @@ footer {
   }
   .contact{ 
     grid-template-columns: 1fr 1fr;
-    & h2 {
-    grid-column: 2 / -1;
   }
-    & a{
-      grid-column: 2 / -1;
-
-    }
+  .contact a,
+  .contact h2{
+    grid-column: 2 / -1;
   }
 }
 @media (width > 1440px){
