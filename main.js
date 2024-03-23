@@ -1,16 +1,18 @@
-const body = document.querySelector('body');
+const root = document.querySelector(':root');
 const darkModeBtn = document.getElementById('dark-mode-toggle');
 darkModeBtn.addEventListener('click', () => {
-  if (body.dataset.theme == "dark") {
-    body.dataset.theme = 'light';
+  if (root.dataset.theme == "dark") {
+    root.dataset.theme = 'light';
   } else {
-    body.dataset.theme = 'dark';
+    root.dataset.theme = 'dark';
   }
+  darkModeBtn.classList.toggle('light')
 })
 
 function userPreferenceCheck() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: light )')
   if (mediaQuery.matches) {
-    body.dataset.theme = 'light';
+    root.dataset.theme = 'light';
   }
 }
+userPreferenceCheck()

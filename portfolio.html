@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,28 +10,32 @@
   <title>Aymen developer</title>
 </head>
 
-<body data-theme="dark">
-  <div class="bg-pattern">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
+<body>
+  <div class="bg-container">
+    <div class="bg-pattern">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </div>
+
   <div class="wrapper">
     <header>
       <a href="#" class="logo">
-        <img src="/images/logo.svg" alt="aymen developer logo">
+        <img src="/assets/logo.svg" alt="aymen developer logo">
       </a>
-      <button class="toggle-btn" id="dark-mode-toggle">
+      <button class="toggle-btn" id="dark-mode-toggle" data-theme="dark">
         <div class="sun-rays"></div>
         <div class="main-circle"></div>
       </button>
     </header>
+
     <main>
       <section class="hero">
         <h1>
-          Hello! <span class="name">I'm Aymen</span>
+          Hello, <span class="name">I'm Aymen.</span>
         </h1>
         <p>A frontend developer based in algeria.</p>
       </section>
@@ -40,32 +43,24 @@
         <h2>Selected Projects:</h2>
         <div class="project">
           <h3>Todo app </h3>
-          <p>This todo app was built with python and django for the backend it also use django rest framework for Creating the API and for the frontend html and bootstrap.</p>
-          <a href="https://aymendev.pythonanywhere.com/login_user/" class="demo">See demo
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <polygon points="7 7 15.586 7 5.293 17.293 6.707 18.707 17 8.414 17 17 19 17 19 5 7 5 7 7" />
-            </svg></a>
-          <a href="https://github.com/aymenthedeveloper/todo_app">View code</a>
+          <p>it is a simple task management application built using Python and the Django web framework. The app features include adding tasks, editing, marking tasks as complete, and deleting tasks.</p>
+            <a href="https://aymendev.pythonanywhere.com/login_user/" class="demo">See demo
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><polygon points="7 7 15.586 7 5.293 17.293 6.707 18.707 17 8.414 17 17 19 17 19 5 7 5 7 7" /></svg>
+            </a>
         </div>
         <div class="project">
           <h3>Age calculator</h3>
-          <p>this project was my solution to the frontend mentor challenge and it use vanilla JavaScript for the logic and age calculation also html and css for the UI.</p>
-          <a href="https://aymenthedeveloper.github.io/age-calculator/" class="demo">See demo
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <polygon points="7 7 15.586 7 5.293 17.293 6.707 18.707 17 8.414 17 17 19 17 19 5 7 5 7 7" />
-            </svg></a>
-          </a>
-          <a href="https://github.com/aymenthedeveloper/age-calculator">View code</a>
+          <p>This app is designed to quickly calculate ages. It provides users with a straightforward interface and also instant input validation when typing to ensure that the app works properly.</p>
+            <a href="https://aymenthedeveloper.github.io/age-calculator/" class="demo">See demo
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><polygon points="7 7 15.586 7 5.293 17.293 6.707 18.707 17 8.414 17 17 19 17 19 5 7 5 7 7" /></svg>
+            </a>
         </div>
         <div class="project">
           <h3>advice generator</h3>
-          <p>this project is also my solution to the challenge on the frontend mentor website its an app that fetch's an API endpoint that return random quotes.</p>
-          <a href="https://aymenthedeveloper.github.io/advice-generator-app/" class="demo">See demo
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <polygon points="7 7 15.586 7 5.293 17.293 6.707 18.707 17 8.414 17 17 19 17 19 5 7 5 7 7" />
-            </svg></a>
-          </a>
-          <a href="https://github.com/aymenthedeveloper/advice-generator-app">View code</a>
+          <p>This app is designed to provide ranqom quotes. Whenever the user rolls the dice, the app fetches an API endpoint that returns an object that contains a random quote and displays it to the user.</p>
+            <a href="https://aymenthedeveloper.github.io/advice-generator-app/" class="demo">See demo
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><polygon points="7 7 15.586 7 5.293 17.293 6.707 18.707 17 8.414 17 17 19 17 19 5 7 5 7 7" /></svg>
+            </a>
         </div>
       </section>
       <section class="contact">
