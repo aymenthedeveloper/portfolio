@@ -7,7 +7,7 @@
   --bar-clr: #222;
   --border-clr: #333;
   
-  --fs-h1: clamp(2.875rem, 7vw + 1rem, 7rem);
+  --fs-h1: clamp(2.75rem, 7vw + 1rem, 7rem);
   --fs-h2: clamp(2.125rem, 4vw + 1rem, 3.75rem);
   --fs-h3: clamp(1.75rem, 4vw + 1rem, 2.75rem);
   
@@ -104,7 +104,7 @@ main .hero .name {
 }
 
 main .hero p {
-  font-size: clamp(1.625rem, 3vw + 1rem, 2.75rem);
+  font-size: clamp(1.5rem, 3vw + 1rem, 2.75rem);
   line-height: 120%;
   margin-block: .25em;
   font-weight: 300;
@@ -128,11 +128,11 @@ main .hero p {
 .selected-projects > h2{
   font-size: var(--fs-h2);
   line-height: 120%;
-  margin-block: 0 1rem;
+  margin-block: 0 .5em;
 }
 .projects .project {
   position: relative;
-  padding-block: 30px;
+  padding-block: 20px;
 }
 .projects .project::before,
 .projects .project:last-child::after {
@@ -182,7 +182,7 @@ main .hero p {
 }
 .contact h3 {
   font-size: clamp(2.5rem, 4vw + 1rem, 3rem);
-  margin-bottom: .5em;
+  margin-bottom: .75em;
   line-height: 120%;
 }
 
@@ -231,6 +231,7 @@ footer p{
   .projects .project{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    padding-block: 30px;
   }
   .projects .project .project-title{
     grid-column: span 2;
