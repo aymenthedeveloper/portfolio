@@ -13,6 +13,7 @@ function userPreferenceCheck() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: light )')
   if (mediaQuery.matches) {
     root.dataset.theme = 'light';
+    darkModeBtn.classList.toggle('light')
   }
 }
 userPreferenceCheck()
