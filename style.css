@@ -7,9 +7,9 @@
   --bar-clr: #222;
   --border-clr: #333;
   
-  --fs-h1: clamp(2.75rem, 7vw + 1rem, 7rem);
-  --fs-h2: clamp(2.125rem, 4vw + 1rem, 3.75rem);
-  --fs-h3: clamp(1.75rem, 4vw + 1rem, 2.75rem);
+  --fs-h1: clamp(3.375rem, 7vw + 1rem, 7rem);
+  --fs-h2: clamp(2.25rem, 4vw + 1rem, 3.375rem);
+  --fs-h3: clamp(1.5rem, 4vw + 1rem, 2.25rem);
   
   --img-size: 35px;
   --invert: 1;
@@ -104,7 +104,7 @@ main .hero .name {
 }
 
 main .hero p {
-  font-size: clamp(1.5rem, 3vw + 1rem, 2.75rem);
+  font-size: var(--fs-h3);
   line-height: 120%;
   margin-block: .25em;
   font-weight: 300;
@@ -148,7 +148,8 @@ main .hero p {
 }
 .projects .project .project-title {
   font-size: var(--fs-h3);
-  margin-block: 0 1rem;
+  margin-block: 0 .5rem;
+  font-weight: 600;
 }
 .projects .project p {
   color: var(--accent-text-clr);
@@ -156,7 +157,7 @@ main .hero p {
   margin-block: 0 1.25rem;
   font-size: 1rem;
 }
-.projects .project .demo {
+.projects .project .demo{
   border: 1px solid var(--text-clr);
   padding-inline: 13px 10px;
   padding-block: 6px;
@@ -167,10 +168,11 @@ main .hero p {
   align-items: center;
   width: fit-content;
 }
-.projects .project .demo svg {
+.projects .project .demo svg{
   height: 20px;
   fill: var(--main-bg-clr);
 }
+
 
 
 
