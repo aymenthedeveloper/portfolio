@@ -4,12 +4,12 @@
   --main-bg-clr: #151515;
   --text-clr: white;
   --accent-text-clr: #777;
-  --bar-clr: #333;
+  --bar-clr: #232323;
   --border-clr: #333;
   
   --fs-h1: clamp(3.375rem, 7vw + 1rem, 7rem);
   --fs-h2: clamp(2.25rem, 4vw + 1rem, 3.375rem);
-  --fs-h3: clamp(1.5rem, 4vw + 1rem, 2.25rem);
+  --fs-h3: clamp(1.5rem, 4vw + 1rem, 2rem);
   
   --img-size: 35px;
   --invert: 1;
@@ -19,7 +19,7 @@
   --main-bg-clr: white;
   --text-clr: black;
   --accent-text-clr: #777;
-  --bar-clr: #d6d6d6;
+  --bar-clr: #d9d9d9;
   --invert: 0;
   --border-clr: #bbb;
 }
@@ -153,15 +153,17 @@ main .hero p {
 .projects .project .project-title {
   font-size: var(--fs-h3);
   margin-block: 0 .5rem;
+  margin-left: 3px;
   font-weight: 600;
 }
 
 
 .projects .project p {
   color: var(--accent-text-clr);
-  max-width: 40ch;
+  max-width: 50ch;
   margin-block: 0 1.25rem;
-  font-size: 16px;
+  margin-right: 5px;
+  font-size: .875rem;
 }
 .projects .project .demo{
   border: 1px solid var(--text-clr);
@@ -199,10 +201,9 @@ main .hero p {
 }
 
 
-
 /* contact styles */
 .contact {
-  min-height: max(75vh, 350px);
+  min-height: max(65vh, 350px);
   display: grid;
   align-content: center;
 }
@@ -270,6 +271,7 @@ footer p{
     grid-column: span 2;
     grid-row: span 2;
     margin-block: 0;
+		
     align-self: center;
   }
   .projects .project  p{
@@ -288,7 +290,6 @@ footer p{
 }
 @media (min-width: 1024px){
   :root{
-    --margin: 40px;
     --height: 60px;
     --img-size: 45px;
   }
@@ -317,7 +318,7 @@ footer p{
 }
 @media (min-width: 1440px){
   .wrapper{
-    max-width: 1360px;
+    max-width: calc(1440px - var(--margin) * 2);
     margin: 0 auto;
   }
   .bg-pattern{
