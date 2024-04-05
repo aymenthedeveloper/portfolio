@@ -16,4 +16,6 @@ function userPreferenceCheck() {
     darkModeBtn.classList.toggle('light')
   }
 }
-userPreferenceCheck()
+userPreferenceCheck();
+const url = window.location.href;
+console.log(url);

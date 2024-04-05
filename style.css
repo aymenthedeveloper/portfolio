@@ -4,7 +4,7 @@
   --main-bg-clr: #151515;
   --text-clr: white;
   --accent-text-clr: #777;
-  --bar-clr: #222;
+  --bar-clr: #333;
   --border-clr: #333;
   
   --fs-h1: clamp(3.375rem, 7vw + 1rem, 7rem);
@@ -125,6 +125,10 @@ main .hero p {
 }
 
 /* projects section */
+.selected-projects{
+  display: grid;
+  grid-template-columns: 1fr;
+}
 .selected-projects > h2{
   font-size: var(--fs-h2);
   line-height: 120%;
@@ -140,7 +144,7 @@ main .hero p {
   position: absolute;
   width: 100%;
   height: 1px;
-  background-color: var(--text-clr);
+  background-color: var(--bar-clr);
   top: 0;
 }
 .projects .project:last-child::after {
@@ -151,11 +155,13 @@ main .hero p {
   margin-block: 0 .5rem;
   font-weight: 600;
 }
+
+
 .projects .project p {
   color: var(--accent-text-clr);
   max-width: 40ch;
   margin-block: 0 1.25rem;
-  font-size: 1rem;
+  font-size: 16px;
 }
 .projects .project .demo{
   border: 1px solid var(--text-clr);
@@ -172,7 +178,24 @@ main .hero p {
   height: 20px;
   fill: var(--main-bg-clr);
 }
-
+.selected-projects .see-all{
+  border: 1.5px solid var(--text-clr);
+  padding-inline: 13px 10px;
+  padding-block: 6px;
+  border-radius: 2rem;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  background-color: var(--main-bg-clr);
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.selected-projects .see-all svg {
+  height: 20px;
+  fill: var(--text-clr);
+}
 
 
 
@@ -229,7 +252,7 @@ footer p{
 
 
 /* media quries */
-@media (width > 550px) {
+@media (min-width: 550px) {
   .projects .project{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -249,7 +272,7 @@ footer p{
     grid-column: span 2;
   }
 }
-@media (width > 1024px){
+@media (min-width: 1024px){
   :root{
     --margin: 40px;
     --height: 60px;
@@ -269,7 +292,7 @@ footer p{
     grid-column: 2 / -1;
   }
 }
-@media (width > 1440px){
+@media (min-width: 1440px){
   .wrapper{
     max-width: 1360px;
     margin: 0 auto;
