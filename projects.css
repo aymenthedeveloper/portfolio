@@ -1,0 +1,29 @@
+.selected-projects>h2 {
+	margin-block: 2em .5em;
+}
+.projects .project img {
+	width: 100%;
+}
+@media (min-width: 550px) {
+	.projects .project{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows:  auto auto auto;
+	padding-block: 30px;
+	}
+	.projects .project .project-title{
+	grid-column: span 2;
+	grid-row: span 2;
+	margin-block: 0;
+	align-self: start;
+	}
+	.projects .project img{
+	grid-column: 1 / 5;
+	grid-row: 1 / 2;
+	margin-bottom: 20px;
+	}
+	.projects .project  p,
+	.projects .project a{
+	grid-column: span 2;
+	}
+}
