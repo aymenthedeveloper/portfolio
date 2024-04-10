@@ -11,6 +11,7 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows:  repeat(3, auto);
+
 	}
 	.projects .project .project-title{
 		grid-column: span 2;
@@ -21,6 +22,9 @@
 	.projects .project  p,
 	.projects .project a{
 		grid-column: span 2;
+	}
+	.projects .project a{
+		align-self: end;
 	}
 	.projects .project img{
     grid-column: 1 / 5;
@@ -36,25 +40,20 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
-	.projects .project:last-child{
-		grid-column: span 2;
-	}
-	.projects .project:last-child p{
-		max-width: 55ch;
+	.projects .project{
+		grid-template-rows:  repeat(3, minmax(100px, auto));
 	}
 	.projects .project .project-title{
 		grid-row: revert;
 		}
 	.projects .project  p{
 		grid-row: span 2;
-		max-width: 30ch;
+		max-width: 35ch;
 		margin-bottom: 0;
 	}
 	.projects .project  a{
 		grid-column: 1 / 3;
 		align-self: end;
-
-
 	}
 	.contact, .projects, .projects .project:last-child{
 		column-gap: 10px;
