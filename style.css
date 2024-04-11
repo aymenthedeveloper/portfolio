@@ -139,6 +139,7 @@ main .hero p {
   padding-block: 20px;
 }
 .projects .project::before,
+.projects .project:nth-child(5)::after,
 .projects .project:last-child::after {
   content: "";
   position: absolute;
@@ -147,6 +148,7 @@ main .hero p {
   background-color: var(--bar-clr);
   top: 0;
 }
+.projects .project:nth-child(5)::after,
 .projects .project:last-child::after {
   inset: auto 0 0 0 ;
 }
