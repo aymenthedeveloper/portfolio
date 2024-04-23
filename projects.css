@@ -36,6 +36,17 @@
 	.bg-pattern .bar:nth-child(3) {
       width: 10px;
 	  }
+	  .projects .project:nth-child(7)::after{
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		background-color: var(--bar-clr);
+		top: 0;
+	  }
+	  .projects .project:nth-child(7)::after{
+		inset: auto 0 0 0;
+	  }
 	.projects{
 		display: grid;
 		grid-template-columns: 1fr 1fr;

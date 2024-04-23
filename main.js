@@ -17,5 +17,3 @@ function userPreferenceCheck() {
   }
 }
 userPreferenceCheck();
-const url = window.location.href;
-console.log(url);
