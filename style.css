@@ -185,6 +185,9 @@ main .hero p {
   background-repeat: no-repeat;
   background-size: 100%;
 }
+:root[data-theme="light"] .projects .project .demo::after{
+  filter: invert(1);
+}
 .projects .project .project-title,
 .projects .project p,
 .projects .project .demo{
