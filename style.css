@@ -1,12 +1,19 @@
+@font-face {
+  font-family: 'firaCode';
+  src: url(./fonts/Fira_Code/FiraCode-VariableFont_wght.ttf);
+}
+
 :root{
   --margin: 12px;
   --height: 55px;
   --main-bg-clr: #151515;
   --text-clr: white;
   --accent-text-clr: #777;
+  --light-accent-text-clr: #888;
   --bar-clr: #232323;
   --border-clr: #333;
-  
+  --heading: clamp(2rem, 6.5vw + 1rem, 3.75rem);
+  --sub-heading: clamp(3rem, 7vw + 1rem, 7rem);
   --fs-h1: clamp(3rem, 7vw + 1rem, 7rem);
   --fs-h2: clamp(2.25rem, 4vw + 1rem, 3.375rem);
   --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 2rem);
@@ -89,29 +96,43 @@ main .hero {
   min-height: max(calc(100vh - var(--height)), 500px);
   display: grid;
   align-content: center;
+  row-gap: 1rem;
 }
 
 main .hero h1 {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-family: 'firaCode', sans-serif;
+  letter-spacing: 2px;
   margin: 0;
-  font-size: var(--fs-h1);
+  font-size: var(--heading);
   line-height: 110%;
   animation: slide-in 1s ease 500ms forwards;
   opacity: 0;
+  
+  & span{
+    grid-column: span 7;
+  }
+  & span:first-child{
+    justify-self: start;
+  }
+  & span:last-child{
+    justify-self: end;
+  }
+    
 }
 
-main .hero .name {
-  display: block;
-}
-
-main .hero p {
-  font-size: var(--fs-h3);
-  line-height: 120%;
-  margin-block: .25em;
+main .hero p{
+  font-size: 1.375rem;
+  line-height: 115%;
+  margin-block: .5em;
   font-weight: 300;
   color: var(--accent-text-clr);
-  max-width: 20ch;
   animation: slide-in 1s ease 750ms forwards;
-  opacity: 0;
+
+  & b{
+    color: var(--light-accent-text-clr);
+  }
 }
 
 @keyframes slide-in {
@@ -281,10 +302,48 @@ footer p{
 }
 
 
+
+@media (max-width: 380px) {
+  main .hero h1{
+    letter-spacing: revert;
+  }
+  main .hero h1 span:last-child::after {
+    content: '.';
+  }
+  main .hero h1 span:first-child,
+  main .hero h1 span:last-child {
+    grid-column: span 7;
+    justify-self: start;
+  }
+}
+@media (max-width: 500px) {
+  :root{
+    --fs-h1: clamp(2.5rem, 7vw + 1rem, 5rem);
+  }
+  main .hero p{
+    font-size: clamp(1rem, .75vw + 1rem, 1.375rem);
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+}
 /* media quries */
 @media (min-width: 650px) {
   :root{
     --margin: 20px;
+    --heading: clamp(3.75rem, 6.25vw + 1rem, 6rem);
+  }
+  main .hero h1 span:first-child{
+    grid-column: 1 / 5;
+    justify-self: end;
+  }
+  main .hero h1 span:last-child{
+    grid-column: 4 / -1;
+    justify-self: start;
+  }
+  main .hero p{
+    width: 70%;
+    margin: auto;
+    text-align: center;
   }
   .selected-projects{
     grid-template-columns: repeat(4, 1fr);
@@ -320,15 +379,14 @@ footer p{
 }
 @media (min-width: 1024px){
   :root{
+    --heading: clamp(5rem, 7vw + 1rem, 7rem);
     --height: 60px;
     --img-size: 45px;
     --margin: 28px; 
   }
-  main .hero .name{
-    display: revert;
-  }
   main .hero p{
-    max-width: revert;
+    width: 50%;
+    font-size: 1.625rem;
   }
   .contact{ 
     grid-template-columns: 1fr 1fr;
@@ -349,12 +407,12 @@ footer p{
 }
 @media (min-width: 1440px){
   .wrapper{
-    max-width: calc(1440px - var(--margin) * 2);
+    max-width: calc(1400px - var(--margin) * 2);
     margin: 0 auto;
   }
   .bg-pattern{
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 1400px;
   }
 }
 
