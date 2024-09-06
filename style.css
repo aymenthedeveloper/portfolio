@@ -1,5 +1,5 @@
 :root{
-  --margin: 20px;
+  --margin: 12px;
   --height: 55px;
   --main-bg-clr: #151515;
   --text-clr: white;
@@ -7,9 +7,9 @@
   --bar-clr: #232323;
   --border-clr: #333;
   
-  --fs-h1: clamp(3.375rem, 7vw + 1rem, 7rem);
+  --fs-h1: clamp(3rem, 7vw + 1rem, 7rem);
   --fs-h2: clamp(2.25rem, 4vw + 1rem, 3.375rem);
-  --fs-h3: clamp(1.5rem, 4vw + 1rem, 2rem);
+  --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 2rem);
   
   --img-size: 35px;
   --invert: 1;
@@ -58,7 +58,7 @@ a {
   animation: show-bars 1000ms ease forwards;
 }
 .bg-pattern .bar {
-  border: .5px solid var(--bar-clr);
+  border: 1px solid var(--bar-clr);
 }
 @keyframes show-bars {
   to {height: 100%;}
@@ -139,6 +139,7 @@ main .hero p {
   padding-block: 20px;
 }
 .projects .project::before,
+.projects .project:nth-last-child(2)::after,
 .projects .project:last-child::after {
   content: "";
   position: absolute;
@@ -147,6 +148,7 @@ main .hero p {
   background-color: var(--bar-clr);
   top: 0;
 }
+.projects .project:nth-last-child(2)::after,
 .projects .project:last-child::after {
   inset: auto 0 0 0;
 }
@@ -213,9 +215,17 @@ main .hero p {
   justify-content: center;
   white-space: nowrap;
 }
-.selected-projects .see-all svg {
-  height: 20px;
-  fill: var(--text-clr);
+.selected-projects .see-all::after{
+  filter: invert(1);
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-image: url(./assets/arrowUp.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+:root[data-theme="light"] .selected-projects .see-all::after{
+  filter: invert(0);
 }
 
 
@@ -272,7 +282,10 @@ footer p{
 
 
 /* media quries */
-@media (min-width: 550px) {
+@media (min-width: 650px) {
+  :root{
+    --margin: 20px;
+  }
   .selected-projects{
     grid-template-columns: repeat(4, 1fr);
   }
@@ -309,6 +322,7 @@ footer p{
   :root{
     --height: 60px;
     --img-size: 45px;
+    --margin: 28px; 
   }
   main .hero .name{
     display: revert;
