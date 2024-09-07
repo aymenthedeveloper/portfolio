@@ -125,7 +125,7 @@ main .hero p{
   box-sizing: border-box;
   font-size: 1.375rem;
   line-height: 115%;
-  margin-block: .5em;
+  margin-block: .25em;
   font-weight: 300;
   color: var(--accent-text-clr);
   animation: slide-in .5s ease 750ms forwards;
@@ -307,7 +307,7 @@ footer p{
 
 @media (max-width: 450px) {
   main .hero {
-    row-gap: .5rem;
+    row-gap: .25rem;
   }
   main .hero h1{
     letter-spacing: revert;
