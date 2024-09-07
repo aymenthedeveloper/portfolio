@@ -15,7 +15,6 @@ darkModeBtn.addEventListener('click', () => {
 function userPreferenceCheck() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: light )')
   const preferedMode = localStorage.getItem('prefers-color-scheme') || 'dark';
-  console.log(preferedMode);
   if (mediaQuery.matches || preferedMode == 'light') {
     root.dataset.theme = 'light';
     darkModeBtn.classList.add('light')
@@ -45,10 +44,8 @@ function createProjectElement(prj, page){
 
 
 function displayProjects(projectsList){
-  console.log('called');
   const projectsContainer = document.querySelector('.selected-projects .projects');
   const page = projectsContainer.dataset.page;
-  console.log(page);
   for (let i = 0, len = projectsList.length; i < len; i++) {
     const project = projectsList[i];
     if (!project.displayed) continue;

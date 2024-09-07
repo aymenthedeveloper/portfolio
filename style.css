@@ -110,17 +110,15 @@ main .hero h1 {
   animation: slide-in .5s ease 500ms forwards;
   opacity: 0;
   text-wrap: nowrap;
-  
-  & span{
-    grid-column: span 7;
-  }
-  & span:first-child{
-    justify-self: start;
-  }
-  & span:last-child{
-    justify-self: end;
-  }
-    
+}
+main .hero h1 span{
+  grid-column: span 7;
+}
+main .hero h1 span:first-child{
+  justify-self: start;
+}
+main .hero h1 span:last-child{
+  justify-self: end;
 }
 
 main .hero p{
@@ -132,7 +130,7 @@ main .hero p{
   color: var(--accent-text-clr);
   animation: slide-in .5s ease 750ms forwards;
   opacity: 0;
-  padding-right: 16px;
+
 }
 main .hero p b{
   color: var(--light-accent-text-clr);
@@ -323,12 +321,14 @@ footer p{
     --fs-h1: clamp(2.5rem, 7vw + 1rem, 5rem);
   }
   main .hero p{
-    font-size: clamp(1rem, .9vw + 1rem, 1.375rem);    
+    font-size: clamp(1rem, .9vw + 1rem, 1.375rem);   
+    padding-right: 16px; 
   }
 }
 @media (min-width: 450px) and (max-width: 650px) {
   main .hero p{
     text-align: center;
+    padding-inline: 8px;
   }
   
 }
@@ -393,7 +393,7 @@ footer p{
   }
   main .hero p{
     width: 50%;
-    font-size: 1.625rem;
+    font-size: 1.65rem;
   }
   .contact{ 
     grid-template-columns: 1fr 1fr;
@@ -420,6 +420,9 @@ footer p{
   .bg-pattern{
     margin: 0 auto;
     max-width: 1400px;
+  }
+  main .hero p{
+    font-size: 1.9rem;
   }
 }
 
