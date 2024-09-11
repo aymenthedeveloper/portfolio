@@ -29,6 +29,7 @@
   --bar-clr: #d9d9d9;
   --invert: 0;
   --border-clr: #bbb;
+  
 }
 
 body {
@@ -189,24 +190,21 @@ main .hero p b{
 }
 .projects .project .demo{
   border: 1px solid var(--text-clr);
-  padding-inline: 13px 35px;
-  padding-block: 6px;
+  padding: 6px 13px;
   border-radius: 2rem;
   background-color: var(--text-clr);
   color: var(--main-bg-clr);
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   width: fit-content;
-  position: relative;
 }
 
 .projects .project .demo::after{
   content: '';
   width: 22px;
   height: 22px;
-  left: 95px;
   background-image: url(./assets/arrowUp.svg);
-  position: absolute;
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -225,18 +223,20 @@ main .hero p b{
 }
 .selected-projects .see-all{
   border: 1.5px solid var(--text-clr);
-  padding-inline: 13px 10px;
-  padding-block: 6px;
+  background-color: var(--main-bg-clr);
+  color: var(--text-clr);
+  padding: 6px 13px;
   border-radius: 2rem;
+  column-gap: 2px;
   margin-top: 20px;
   font-weight: 600;
   font-size: 1.125rem;
-  background-color: var(--main-bg-clr);
-  color: var(--text-clr);
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  position: relative;
+  
 }
 .selected-projects .see-all::after{
   filter: invert(1);
@@ -245,8 +245,10 @@ main .hero p b{
   height: 30px;
   background-image: url(./assets/arrowUp.svg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 30px 30px  ;
+  
 }
+
 :root[data-theme="light"] .selected-projects .see-all::after{
   filter: invert(0);
 }

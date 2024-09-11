@@ -46,13 +46,16 @@ function createProjectElement(prj, page){
 function displayProjects(projectsList){
   const projectsContainer = document.querySelector('.selected-projects .projects');
   const page = projectsContainer.dataset.page;
+  let addedProjects = 0;
   for (let i = 0, len = projectsList.length; i < len; i++) {
     const project = projectsList[i];
     if (!project.displayed) continue;
     if (!project.displayedIn.includes(page)) continue;
+    addedProjects++
     const projectDiv = createProjectElement(project, page);
     projectsContainer.insertAdjacentElement('beforeend', projectDiv)
   }
+  if (addedProjects % 2 === 1) projectsContainer.classList.add('expand-first-project')
 };
 const projects = [
   {
@@ -96,10 +99,10 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'Age Calculator',
-    image: './projects/ageCalculator.jpg',
-    descreption: 'This app is designed to quickly calculate ages. It provides users with a straightforward and modern user interface and also instant input validation.',
-    link: 'https://aymenthedeveloper.github.io/age-calculator/',
+    title: 'Pricing component with toggle',
+    image: './projects/pricingComponent.jpg',
+    descreption: 'A responsive pricing page with a toggle feature that allows users to easly switch between monthly and annual plans. Built using HTML, CSS, and vanilla JavaScript.',
+    link: 'https://github.com/aymenthedeveloper/pricing-component-with-toggle',
     displayed: true,
     displayedIn: ['projects']
   },
@@ -108,6 +111,14 @@ const projects = [
     image: './projects/adviceGenerator.jpg',
     descreption: 'This app is designed to provide random quotes. Whenever the user rolls the dice, the app fetches an API endpoint that returns an object which contains a random advice.',
     link: 'https://aymenthedeveloper.github.io/advice-generator-app',
+    displayed: true,
+    displayedIn: ['projects']
+  },
+  {
+    title: 'Age Calculator',
+    image: './projects/ageCalculator.jpg',
+    descreption: 'This app is designed to quickly calculate ages. It provides users with a straightforward and modern user interface and also instant input validation.',
+    link: 'https://aymenthedeveloper.github.io/age-calculator/',
     displayed: true,
     displayedIn: ['projects']
   },
@@ -126,7 +137,7 @@ const projects = [
     link: 'https://aymenthedeveloper.github.io/Tip-calculator-app',
     displayed: false,
     displayedIn: ['projects']
-  },
+  }
   
 ];
 
