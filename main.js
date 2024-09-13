@@ -102,7 +102,7 @@ const projects = [
     title: 'Pricing component with toggle',
     image: './projects/pricingComponent.jpg',
     descreption: 'A responsive pricing page with a toggle feature that allows users to easly switch between monthly and annual plans. Built using HTML, CSS, and vanilla JavaScript.',
-    link: 'https://github.com/aymenthedeveloper/pricing-component-with-toggle',
+    link: 'https://aymenthedeveloper.github.io/pricing-component-with-toggle/',
     displayed: true,
     displayedIn: ['projects']
   },
