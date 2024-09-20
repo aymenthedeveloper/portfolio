@@ -59,6 +59,14 @@ function displayProjects(projectsList){
 };
 const projects = [
   {
+    title: 'Interactive Comments Section',
+    image: './projects/commentSection.jpg',
+    descreption: 'A comment section implementation with CRUD operations, allowing users to manage and reply to comments entirely on the front end. Built using HTML, CSS, and vanilla JavaScript.',
+    link: 'https://aymenthedeveloper.github.io/Interactive-comments-section/',
+    displayed: true,
+    displayedIn: ['projects', 'home']
+  },
+  {
     title: 'Interactive Card Form',
     image: './projects/interactiveCardForm.jpg',
     descreption: 'This form simplifies card details writing by checking user input and displaying information on an example card, enhancing interactivity and visual aiding user comprehension.',
@@ -96,7 +104,7 @@ const projects = [
     descreption: 'This landing page serves as the first touchpoint for users, offering a clean and engaging interface that encourages them to take action and book a demo to try out the project tracking tool.',
     link: 'https://aymenthedeveloper.github.io/project-tracking-intro-component/',
     displayed: true,
-    displayedIn: ['projects', 'home']
+    displayedIn: ['projects']
   },
   {
     title: 'Pricing component with toggle',

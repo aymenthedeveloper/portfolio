@@ -19,7 +19,6 @@
   --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 2rem);
   
   --img-size: 35px;
-  --invert: 1;
 }
 
 :root[data-theme="light"] {
@@ -27,7 +26,6 @@
   --text-clr: black;
   --accent-text-clr: #777;
   --bar-clr: #d9d9d9;
-  --invert: 0;
   --border-clr: #bbb;
   
 }
@@ -89,7 +87,10 @@ header .logo {
 }
 header .logo img {
   height: var(--img-size);
-  filter: invert(var(--invert));
+  filter: invert(1);
+}
+:root[data-theme="light"] header .logo img {
+  filter: invert(0);
 }
 
 /* hero section */
@@ -189,15 +190,19 @@ main .hero p b{
   font-size: .875rem;
 }
 .projects .project .demo{
-  border: 1px solid var(--text-clr);
-  padding: 6px 13px;
-  border-radius: 2rem;
+  border: 2px solid var(--text-clr);
   background-color: var(--text-clr);
   color: var(--main-bg-clr);
+  padding: 6px 13px;
+  border-radius: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
+}
+.projects .project .demo:hover{
+  background-color: var(--main-bg-clr);
+  color:  var(--text-clr);
 }
 
 .projects .project .demo::after{
@@ -208,8 +213,12 @@ main .hero p b{
   background-repeat: no-repeat;
   background-size: 100%;
 }
+.projects .project .demo:hover::after,
 :root[data-theme="light"] .projects .project .demo::after{
   filter: invert(1);
+}
+:root[data-theme="light"] .projects .project .demo:hover::after{
+  filter: invert(0);
 }
 .projects .project .project-title,
 .projects .project p,
@@ -222,7 +231,7 @@ main .hero p b{
   fill: var(--main-bg-clr);
 }
 .selected-projects .see-all{
-  border: 1.5px solid var(--text-clr);
+  border: 2px solid var(--text-clr);
   background-color: var(--main-bg-clr);
   color: var(--text-clr);
   padding: 6px 13px;
@@ -236,8 +245,13 @@ main .hero p b{
   justify-content: center;
   white-space: nowrap;
   position: relative;
-  
 }
+.selected-projects .see-all:hover{
+  background-color: var(--text-clr);
+  color: var(--main-bg-clr);
+}
+
+
 .selected-projects .see-all::after{
   filter: invert(1);
   content: '';
@@ -249,8 +263,12 @@ main .hero p b{
   
 }
 
+.selected-projects .see-all:hover::after,
 :root[data-theme="light"] .selected-projects .see-all::after{
   filter: invert(0);
+}
+:root[data-theme="light"] .selected-projects .see-all:hover::after{
+  filter: invert(1);
 }
 
 
