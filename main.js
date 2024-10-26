@@ -1,5 +1,6 @@
 const root = document.querySelector(':root');
 const darkModeBtn = document.getElementById('dark-mode-toggle');
+
 darkModeBtn.addEventListener('click', () => {
   
   if (root.dataset.theme == "dark") {
@@ -35,7 +36,7 @@ function createProjectElement(prj, page){
     <p>${prj.descreption}</p>
     <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
   } else {
-    projectDiv.innerHTML = `<h3 class="project-title">${prj.title}</h3>
+    projectDiv.innerHTML = `<h3 class="project-title to-reveal">${prj.title}</h3>
     <p>${prj.descreption}</p>
     <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
   }
@@ -63,6 +64,14 @@ const projects = [
     image: './projects/commentSection.jpg',
     descreption: 'A comment section implementation with CRUD operations, allowing users to manage and reply to comments entirely on the front end. Built using HTML, CSS, and vanilla JavaScript.',
     link: 'https://aymenthedeveloper.github.io/Interactive-comments-section/',
+    displayed: true,
+    displayedIn: ['projects', 'home']
+  },
+  {
+    title: 'E-commerce product page',
+    image: './projects/ecommerce-product-page.jpg',
+    descreption: 'An intuitive e-commerce product page showcasing detailed product information, enhanced by a lightbox mode for a better image-viewing experience.',
+    link: 'https://aymenthedeveloper.github.io/E-commerce-product-page/',
     displayed: true,
     displayedIn: ['projects', 'home']
   },
@@ -96,7 +105,7 @@ const projects = [
     descreption: 'This dashboard shows the overall growth of several social media accounts, including Instagram, Twitter, Facebook, and YouTube. It displays the overall number of followers, how much has increased since yesterday, and the percentage.',
     link: 'https://aymenthedeveloper.github.io/Social-Media-Dashboard/',
     displayed: true,
-    displayedIn: ['projects', 'home']
+    displayedIn: ['projects']
   },
   {
     title: 'Project Tracking Landing Page',
@@ -127,7 +136,7 @@ const projects = [
     image: './projects/ageCalculator.jpg',
     descreption: 'This app is designed to quickly calculate ages. It provides users with a straightforward and modern user interface and also instant input validation.',
     link: 'https://aymenthedeveloper.github.io/age-calculator/',
-    displayed: true,
+    displayed: false,
     displayedIn: ['projects']
   },
   {
@@ -149,5 +158,30 @@ const projects = [
   
 ];
 
+let lastCall = 0;
+function handleScroll(){
+  let now = Date.now();
+  const delay = 250 // ms
+  if (now - lastCall > delay){
+    const headings = document.querySelectorAll('.to-reveal');
+    lastCall = now;
+    let count = 0;
+    headings.forEach((heading)=>{
+      const position = heading.getBoundingClientRect().top;
+      if (position - 25 < innerHeight){
+        heading.classList.add('reveal')
+        count++
+      }
+    })
+    if (count >= headings.length){
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }
+}
+
+
+window.addEventListener('scroll', handleScroll)
+
 displayProjects(projects);
+handleScroll();
 userPreferenceCheck();

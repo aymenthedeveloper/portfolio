@@ -71,6 +71,8 @@ a {
 }
 
 
+
+
 /* header styles */
 
 header {
@@ -109,18 +111,22 @@ main .hero h1 {
   margin: 0;
   font-size: var(--heading);
   line-height: 110%;
-  animation: slide-in .5s ease 500ms forwards;
-  opacity: 0;
+  /* animation: slide-in .5s ease 500ms forwards; */
+  opacity: 1;
   text-wrap: nowrap;
 }
 main .hero h1 span{
   grid-column: span 7;
+  --duration: 700ms;
 }
 main .hero h1 span:first-child{
   justify-self: start;
+  
 }
 main .hero h1 span:last-child{
   justify-self: end;
+  --duration: 650ms;
+  --delay: 100ms;
 }
 
 main .hero p{
@@ -129,13 +135,12 @@ main .hero p{
   line-height: 115%;
   margin-block: .25em;
   font-weight: 300;
-  color: var(--accent-text-clr);
-  animation: slide-in .5s ease 750ms forwards;
-  opacity: 0;
-
+  --duration: 650ms;
+  --delay: 400ms;
+  --base-clr: var(--accent-text-clr);
 }
 main .hero p b{
-  color: var(--light-accent-text-clr);
+  font-weight: bold;
 }
 
 
@@ -151,6 +156,7 @@ main .hero p b{
 
 /* projects section */
 .selected-projects{
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -181,6 +187,7 @@ main .hero p b{
   font-size: var(--fs-h3);
   margin-block: 0 .5rem;
   font-weight: 600;
+  --duration: 500ms;
 }
 
 .projects .project p {
@@ -524,4 +531,28 @@ footer p{
 }
 .toggle-btn.light .main-circle::after {
   transform: scale(1);
+}
+
+
+/* utility classes  */
+.to-reveal{
+  position: relative;
+  top: .8em;
+  color: rgba(0, 0, 0, 0);
+  background-clip: text;
+  background-repeat: no-repeat;
+  background-size: 100% 0%;
+  background-image: linear-gradient(var(--base-clr, var(--text-clr)), var(--base-clr, var(--text-clr)));
+}
+.to-reveal.reveal{
+  animation: show-text var(--duration, 750ms) var(--delay, 0ms) ease-in-out forwards;
+}
+@keyframes show-text {
+  90%{
+    top: 0;
+  }
+  100%{ 
+    top: 0;
+    background-size: 100% 100%;
+  }
 }
