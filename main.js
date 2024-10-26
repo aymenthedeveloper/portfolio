@@ -27,16 +27,17 @@ function userPreferenceCheck() {
 
 
 
-function createProjectElement(prj, page){
+function createProjectElement(prj, page, i){
   const projectDiv = document.createElement('div');
+  const delay = 10 * i;
   projectDiv.classList.add('project')
   if (page == 'projects'){
-    projectDiv.innerHTML = `<h3 class="project-title">${prj.title}</h3>
+    projectDiv.innerHTML = `<h3 class="project-title to-reveal" styem="--delay: ${delay}ms">${prj.title}</h3>
     <img src="${prj.image}" alt="">
     <p>${prj.descreption}</p>
     <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
   } else {
-    projectDiv.innerHTML = `<h3 class="project-title to-reveal">${prj.title}</h3>
+    projectDiv.innerHTML = `<h3 class="project-title to-reveal" styem="--delay: ${delay}ms">${prj.title}</h3>
     <p>${prj.descreption}</p>
     <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
   }
@@ -53,7 +54,7 @@ function displayProjects(projectsList){
     if (!project.displayed) continue;
     if (!project.displayedIn.includes(page)) continue;
     addedProjects++
-    const projectDiv = createProjectElement(project, page);
+    const projectDiv = createProjectElement(project, page, i+1);
     projectsContainer.insertAdjacentElement('beforeend', projectDiv)
   }
   if (addedProjects % 2 === 1) projectsContainer.classList.add('expand-first-project')
@@ -161,19 +162,26 @@ const projects = [
 let lastCall = 0;
 function handleScroll(){
   let now = Date.now();
-  const delay = 250 // ms
-  if (now - lastCall > delay){
+  if (now - lastCall > 100){
     const headings = document.querySelectorAll('.to-reveal');
     lastCall = now;
     let count = 0;
     headings.forEach((heading)=>{
-      const position = heading.getBoundingClientRect().top;
-      if (position - 25 < innerHeight){
+      const rect = heading.getBoundingClientRect();
+      const position = rect.top + rect.height;
+      if (heading.classList.contains('reveal')){
+        count++
+        return;
+      }
+      if (position < innerHeight){
+        console.log(position, innerHeight);
+        
         heading.classList.add('reveal')
         count++
       }
     })
     if (count >= headings.length){
+      console.log('end');
       window.removeEventListener('scroll', handleScroll)
     }
   }
