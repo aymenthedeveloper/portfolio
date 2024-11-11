@@ -126,7 +126,7 @@ main .hero h1 span:first-child{
 main .hero h1 span:last-child{
   justify-self: end;
   --duration: 650ms;
-  --delay: 100ms;
+  --delay: 150ms;
 }
 
 main .hero p{
@@ -151,6 +151,7 @@ main .hero p b{
   to {
     transform: translateY(0);
     opacity: 1;
+    
   }
 }
 
@@ -543,6 +544,7 @@ footer p{
   background-repeat: no-repeat;
   background-size: 100% 0%;
   background-image: linear-gradient(var(--base-clr, var(--text-clr)), var(--base-clr, var(--text-clr)));
+  filter: blur(3px);
 }
 .to-reveal.reveal{
   animation: show-text var(--duration, 750ms) var(--delay, 0ms) ease-in-out forwards;
@@ -554,5 +556,6 @@ footer p{
   100%{ 
     top: 0;
     background-size: 100% 100%;
+    filter: blur(0);
   }
 }

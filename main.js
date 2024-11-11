@@ -210,7 +210,6 @@ const observer = new IntersectionObserver((entries)=>{
 
 
 displayProjects(projects);
+userPreferenceCheck();
 const headings = document.querySelectorAll('.to-reveal');
 headings.forEach(heading => observer.observe(heading))
-handleScroll();
-userPreferenceCheck();
