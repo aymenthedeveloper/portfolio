@@ -169,34 +169,48 @@ const projects = [
   
 ];
 
-let lastCall = 0;
-function handleScroll(){
-  let now = Date.now();
-  if (now - lastCall > 100){
-    const headings = document.querySelectorAll('.to-reveal');
-    lastCall = now;
-    let count = 0;
-    headings.forEach((heading)=>{
-      const rect = heading.getBoundingClientRect();
-      const position = rect.top + rect.height;
-      if (heading.classList.contains('reveal')){
-        count++
-        return;
-      }
-      if (position < innerHeight){
-        heading.classList.add('reveal')
-        count++
-      }
-    })
-    if (count >= headings.length){
-      window.removeEventListener('scroll', handleScroll)
+// let lastCall = 0;
+// function handleScroll(){
+//   let now = performance.now();
+//   if (now - lastCall > 100){
+//     const headings = document.querySelectorAll('.to-reveal');
+//     lastCall = now;
+//     let count = 0;
+//     headings.forEach((heading)=>{
+//       const rect = heading.getBoundingClientRect();
+//       const position = rect.top + rect.height;
+//       if (heading.classList.contains('reveal')){
+//         count++
+//         return;
+//       }
+//       if (position < innerHeight){
+//         heading.classList.add('reveal')
+//         count++
+//       }
+//     })
+//     if (count >= headings.length){
+//       window.removeEventListener('scroll', handleScroll)
+//     }
+//   }
+// }
+// window.addEventListener('scroll', handleScroll)
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      entry.target.classList.add("reveal")
     }
-  }
-}
+  })
+});
 
 
-window.addEventListener('scroll', handleScroll)
+
+
+
+
 
 displayProjects(projects);
+const headings = document.querySelectorAll('.to-reveal');
+headings.forEach(heading => observer.observe(heading))
 handleScroll();
 userPreferenceCheck();
