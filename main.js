@@ -77,10 +77,10 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'Interactive Card Form',
-    image: './projects/interactiveCardForm.jpg',
-    descreption: 'This form simplifies card details writing by checking user input and displaying information on an example card, enhancing interactivity and visual aiding user comprehension.',
-    link: 'https://aymenthedeveloper.github.io/Interactive-card-details-form/',
+    title: 'interactive to-do app',
+    image: './projects/todoApp.jpg',
+    descreption: 'An interactive to-do app that offers dark/light mode, task filtering by status, and a smooth drag-and-drop feature for reordering. Created with HTML, CSS, and JavaScript."',
+    link: 'https://aymenthedeveloper.github.io/todo-app/',
     displayed: true,
     displayedIn: ['projects', 'home']
   },
@@ -93,12 +93,20 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
+    title: 'Interactive Card Form',
+    image: './projects/interactiveCardForm.jpg',
+    descreption: 'This form simplifies card details writing by checking user input and displaying information on an example card, enhancing interactivity and visual aiding user comprehension.',
+    link: 'https://aymenthedeveloper.github.io/Interactive-card-details-form/',
+    displayed: true,
+    displayedIn: ['projects', 'home']
+  },
+  {
     title: 'Time Tracking Dashboard',
     image: './projects/timeTrackingDashboard.jpg',
     descreption: 'The Time Tracking Dashboard is a powerful tool designed to help you monitor and manage your time effectively. It provides a comprehensive overview of your daily, weekly, and monthly activities.',
     link: 'https://aymenthedeveloper.github.io/time-tracking-dashboard/',
     displayed: true,
-    displayedIn: ['projects', 'home']
+    displayedIn: ['projects']
   },
   {
     title: 'Social Media Dashboard',
@@ -129,23 +137,25 @@ const projects = [
     image: './projects/adviceGenerator.jpg',
     descreption: 'This app is designed to provide random quotes. Whenever the user rolls the dice, the app fetches an API endpoint that returns an object which contains a random advice.',
     link: 'https://aymenthedeveloper.github.io/advice-generator-app',
-    displayed: true,
-    displayedIn: ['projects']
-  },
-  {
-    title: 'Age Calculator',
-    image: './projects/ageCalculator.jpg',
-    descreption: 'This app is designed to quickly calculate ages. It provides users with a straightforward and modern user interface and also instant input validation.',
-    link: 'https://aymenthedeveloper.github.io/age-calculator/',
     displayed: false,
     displayedIn: ['projects']
   },
+
   {
     title: 'Aesthetic Digital Clock',
     image: './projects/digitalClock.jpg',
     descreption: 'An Instagram story inspired me to create this digital clock project. I fell in love with it instantly because I had never seen a clock like that before, so I decided to make one myself using HTML, CSS, and JavaScript.',
     link: 'https://aymenthedeveloper.github.io/digital-clock/',
     displayed: true,
+    displayedIn: ['projects']
+  },
+
+  {
+    title: 'Age Calculator',
+    image: './projects/ageCalculator.jpg',
+    descreption: 'This app is designed to quickly calculate ages. It provides users with a straightforward and modern user interface and also instant input validation.',
+    link: 'https://aymenthedeveloper.github.io/age-calculator/',
+    displayed: false,
     displayedIn: ['projects']
   },
   {
@@ -174,14 +184,11 @@ function handleScroll(){
         return;
       }
       if (position < innerHeight){
-        console.log(position, innerHeight);
-        
         heading.classList.add('reveal')
         count++
       }
     })
     if (count >= headings.length){
-      console.log('end');
       window.removeEventListener('scroll', handleScroll)
     }
   }
