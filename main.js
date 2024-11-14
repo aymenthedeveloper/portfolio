@@ -33,7 +33,7 @@ function createProjectElement(prj, page, i){
   projectDiv.classList.add('project')
   if (page == 'projects'){
     projectDiv.innerHTML = `<h3 class="project-title to-reveal" styem="--delay: ${delay}ms">${prj.title}</h3>
-    <img src="${prj.image}" alt="">
+    <img src="${prj.image}" alt="${prj.title} image" loading="lazy">
     <p>${prj.descreption}</p>
     <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
   } else {
