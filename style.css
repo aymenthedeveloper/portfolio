@@ -16,7 +16,7 @@
   --sub-heading: clamp(3rem, 7vw + 1rem, 7rem);
   --fs-h1: clamp(3rem, 7vw + 1rem, 7rem);
   --fs-h2: clamp(2.25rem, 4vw + 1rem, 3.375rem);
-  --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 2rem);
+  --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 1.875rem);
   
   --img-size: 35px;
 }
@@ -134,13 +134,13 @@ main .hero p{
   font-size: 1.375rem;
   line-height: 115%;
   margin-block: .25em;
-  font-weight: 300;
+  font-weight: 200;
   --duration: 650ms;
   --delay: 400ms;
-  --base-clr: var(--accent-text-clr);
+  --reveal-clr: var(--accent-text-clr);
 }
 main .hero p b{
-  font-weight: bold;
+  font-weight: 600;
 }
 
 
@@ -356,15 +356,8 @@ footer p{
     padding-right: 16px; 
   }
 }
-@media (min-width: 450px) and (max-width: 650px) {
-  main .hero p{
-    text-align: center;
-    padding-inline: 8px;
-  }
-  
-}
 /* media quries */
-@media (min-width: 650px) {
+@media (min-width: 700px) {
   :root{
     --margin: 20px;
     --heading: clamp(3.75rem, 6.25vw + 1rem, 6rem);
@@ -543,7 +536,7 @@ footer p{
   background-clip: text;
   background-repeat: no-repeat;
   background-size: 100% 0%;
-  background-image: linear-gradient(var(--base-clr, var(--text-clr)), var(--base-clr, var(--text-clr)));
+  background-image: linear-gradient(var(--reveal-clr, var(--text-clr)), var(--reveal-clr, var(--text-clr)));
   filter: blur(3px);
 }
 .to-reveal.reveal{

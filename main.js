@@ -32,12 +32,12 @@ function createProjectElement(prj, page, i){
   const delay = 10 * i;
   projectDiv.classList.add('project')
   if (page == 'projects'){
-    projectDiv.innerHTML = `<h3 class="project-title to-reveal" styem="--delay: ${delay}ms">${prj.title}</h3>
+    projectDiv.innerHTML = `<h3 class="project-title to-reveal" style="--delay: ${delay}ms">${prj.title}</h3>
     <img src="${prj.image}" alt="${prj.title} image" loading="lazy">
     <p>${prj.descreption}</p>
     <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
   } else {
-    projectDiv.innerHTML = `<h3 class="project-title to-reveal" styem="--delay: ${delay}ms">${prj.title}</h3>
+    projectDiv.innerHTML = `<h3 class="project-title to-reveal" style="--delay: ${delay}ms">${prj.title}</h3>
     <p>${prj.descreption}</p>
     <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
   }
@@ -85,9 +85,9 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'interactive to-do app',
+    title: 'Interactive to-do app',
     image: './projects/todoApp.jpg',
-    descreption: 'An interactive to-do app that offers dark/light mode, task filtering by status, and a smooth drag-and-drop feature for reordering. Created with HTML, CSS, and JavaScript."',
+    descreption: 'An interactive to-do app that offers dark/light mode, task filtering by status, and a smooth drag-and-drop feature for reordering. Created with HTML, CSS, and JavaScript.',
     link: 'https://aymenthedeveloper.github.io/todo-app/',
     displayed: true,
     displayedIn: ['projects', 'home']
