@@ -61,6 +61,14 @@ function displayProjects(projectsList){
 };
 const projects = [
   {
+    title: 'Job list with filter',
+    image: './projects/jobListing.jpg',
+    descreption: 'This React app provides a modern and minimal platform for browsing job listings. Users can filter jobs dynamically by keywords, enabling a seamless search experience tailored to their skills and interests.',
+    link: 'https://job-listing-topaz.vercel.app/',
+    displayed: true,
+    displayedIn: ['projects', 'home']
+  },
+  {
     title: 'Interactive Comments Section',
     image: './projects/commentSection.jpg',
     descreption: 'A comment section implementation with CRUD operations, allowing users to manage and reply to comments entirely on the front end. Built using HTML, CSS, and vanilla JavaScript.',
@@ -98,7 +106,7 @@ const projects = [
     descreption: 'This form simplifies card details writing by checking user input and displaying information on an example card, enhancing interactivity and visual aiding user comprehension.',
     link: 'https://aymenthedeveloper.github.io/Interactive-card-details-form/',
     displayed: true,
-    displayedIn: ['projects', 'home']
+    displayedIn: ['projects']
   },
   {
     title: 'Time Tracking Dashboard',
@@ -117,19 +125,27 @@ const projects = [
     displayedIn: ['projects']
   },
   {
-    title: 'Project Tracking Landing Page',
-    image: './projects/projectTracking.jpg',
-    descreption: 'This landing page serves as the first touchpoint for users, offering a clean and engaging interface that encourages them to take action and book a demo to try out the project tracking tool.',
-    link: 'https://aymenthedeveloper.github.io/project-tracking-intro-component/',
-    displayed: true,
-    displayedIn: ['projects']
-  },
-  {
     title: 'Pricing component with toggle',
     image: './projects/pricingComponent.jpg',
     descreption: 'A responsive pricing page with a toggle feature that allows users to easly switch between monthly and annual plans. Built using HTML, CSS, and vanilla JavaScript.',
     link: 'https://aymenthedeveloper.github.io/pricing-component-with-toggle/',
     displayed: true,
+    displayedIn: ['projects']
+  },
+  {
+    title: 'Aesthetic Digital Clock',
+    image: './projects/digitalClock.jpg',
+    descreption: 'An Instagram story inspired me to create this digital clock project. I fell in love with it instantly because I had never seen a clock like that before, so I decided to make one myself using HTML, CSS, and JavaScript.',
+    link: 'https://aymenthedeveloper.github.io/digital-clock/',
+    displayed: true,
+    displayedIn: ['projects']
+  },
+  {
+    title: 'Project Tracking Landing Page',
+    image: './projects/projectTracking.jpg',
+    descreption: 'This landing page serves as the first touchpoint for users, offering a clean and engaging interface that encourages them to take action and book a demo to try out the project tracking tool.',
+    link: 'https://aymenthedeveloper.github.io/project-tracking-intro-component/',
+    displayed: false,
     displayedIn: ['projects']
   },
   {
@@ -140,16 +156,6 @@ const projects = [
     displayed: false,
     displayedIn: ['projects']
   },
-
-  {
-    title: 'Aesthetic Digital Clock',
-    image: './projects/digitalClock.jpg',
-    descreption: 'An Instagram story inspired me to create this digital clock project. I fell in love with it instantly because I had never seen a clock like that before, so I decided to make one myself using HTML, CSS, and JavaScript.',
-    link: 'https://aymenthedeveloper.github.io/digital-clock/',
-    displayed: true,
-    displayedIn: ['projects']
-  },
-
   {
     title: 'Age Calculator',
     image: './projects/ageCalculator.jpg',
