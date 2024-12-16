@@ -15,8 +15,7 @@
   --sub-heading: clamp(3rem, 7vw + 1rem, 7rem);
   --fs-h1: clamp(3rem, 7vw + 1rem, 7rem);
   --fs-h2: clamp(2.25rem, 4vw + 1rem, 3.375rem);
-  --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 1.875rem);
-  
+  --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 1.875rem);  
   --img-size: 35px;
 }
 
@@ -82,21 +81,10 @@ header {
 }
 
 header .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  overflow: hidden;
-  margin-inline: 6px;
 }
 header .logo .text {
   font-size: 2rem;
-  text-shadow: 0 1.6cap 0 var(--accent-text-clr);
-  line-height: 110%;
-  transition: all .25s ease;
-}
-.logo:hover .text{
-  transform: translateY(-1.6cap);
 }
 
 /* hero section */
@@ -168,6 +156,7 @@ main .hero p b{
   font-size: var(--fs-h2);
   line-height: 120%;
   margin-block: 0 .5em;
+  --duration: 400ms;
 }
 .projects .project {
   position: relative;
@@ -188,59 +177,25 @@ main .hero p b{
   inset: auto 0 0 0;
 }
 .projects .project .project-title {
+  display: block;
   font-size: var(--fs-h3);
-  margin-block: 0 .5rem;
+  color: var(--text-clr);
+  margin-block: 0 1rem;
   font-weight: 600;
-  --duration: 500ms;
+  box-sizing: border-box;
+  --duration: 400ms;
+}
+.projects .project .project-title .text{
+  width:fit-content;
 }
 
-.projects .project p {
+.projects .project .project-description {
   color: var(--accent-text-clr);
   max-width: 60ch;
-  margin-block: 0 1.25rem;
+  margin-block: 0;
   font-size: .875rem;
 }
-.projects .project .demo{
-  border: 2px solid var(--text-clr);
-  background-color: var(--text-clr);
-  color: var(--main-bg-clr);
-  padding: 6px 13px;
-  border-radius: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-}
-.projects .project .demo:hover{
-  background-color: var(--main-bg-clr);
-  color:  var(--text-clr);
-}
 
-.projects .project .demo::after{
-  content: '';
-  width: 22px;
-  height: 22px;
-  background-image: url(./assets/arrowUp.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-.projects .project .demo:hover::after,
-:root[data-theme="light"] .projects .project .demo::after{
-  filter: invert(1);
-}
-:root[data-theme="light"] .projects .project .demo:hover::after{
-  filter: invert(0);
-}
-.projects .project .project-title,
-.projects .project p,
-.projects .project .demo{
-  margin-inline: 3px;
-}
-
-.projects .project .demo svg{
-  height: 20px;
-  fill: var(--main-bg-clr);
-}
 .selected-projects .see-all{
   border: 2px solid var(--text-clr);
   background-color: var(--main-bg-clr);
@@ -336,8 +291,12 @@ footer p{
 }
 
 
+/* media quries */
 
 @media (max-width: 450px) {
+  :root{
+    --fs-h1: clamp(2.5rem, 7vw + 1rem, 5rem);
+  }
   main .hero {
     row-gap: .25rem;
   }
@@ -352,15 +311,11 @@ footer p{
     grid-column: span 7;
     justify-self: start;
   }
-  :root{
-    --fs-h1: clamp(2.5rem, 7vw + 1rem, 5rem);
-  }
   main .hero p{
     font-size: clamp(1rem, .9vw + 1rem, 1.375rem);   
     padding-right: 16px; 
   }
 }
-/* media quries */
 @media (min-width: 700px) {
   :root{
     --margin: 20px;
@@ -394,16 +349,12 @@ footer p{
   }
   .projects .project .project-title{
     grid-column: span 2;
-    grid-row: span 2;
     margin-block: 0;
     align-self: center;
   }
-  .projects .project  p{
+  .projects .project  .project-description{
     grid-column: span 2;
     max-width: 55ch;
-  }
-  .projects .project a{
-    grid-column: span 2;
   }
   .selected-projects .see-all{
     grid-column: 1 / 3;
@@ -535,20 +486,20 @@ footer p{
 /* utility classes  */
 .to-reveal{
   position: relative;
-  top: .8em;
+  top: .7em;
   color: rgba(0, 0, 0, 0);
   background-clip: text;
   background-repeat: no-repeat;
   background-size: 100% 0%;
   background-image: linear-gradient(var(--reveal-clr, var(--text-clr)), var(--reveal-clr, var(--text-clr)));
-  filter: blur(3px);
+  filter: blur(2px);
 }
 .to-reveal.reveal{
-  animation: show-text var(--duration, 750ms) var(--delay, 0ms) ease-in-out forwards;
+  animation: show-text var(--duration, 750ms) var(--delay, 0ms) ease forwards;
 }
 @keyframes show-text {
-  90%{
-    top: 0;
+  80%{
+    filter: blur(0);
   }
   100%{ 
     top: 0;
@@ -556,14 +507,14 @@ footer p{
     filter: blur(0);
   }
 }
-.shadow-container{
+.link-shadow-container{
   overflow: hidden;
 }
-.shadow-text {
-  text-shadow: 0 1.8cap 0 var(--accent-text-clr);
+.link-shadow-container .link-text {
+  text-shadow: 0 3cap 0 var(--accent-text-clr);
   line-height: 110%;
   transition: all .25s ease;
 }
-.shadow-container:hover .shadow-text{
-  transform: translateY(-1.8cap);
+.link-shadow-container:hover .link-text{
+  transform: translateY(-3cap);
 }

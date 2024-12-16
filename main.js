@@ -32,14 +32,18 @@ function createProjectElement(prj, page, i){
   const delay = 10 * i;
   projectDiv.classList.add('project')
   if (page == 'projects'){
-    projectDiv.innerHTML = `<h3 class="project-title to-reveal" style="--delay: ${delay}ms">${prj.title}</h3>
+    projectDiv.innerHTML = `
+    <a href="${prj.link}" class="project-title to-reveal link-shadow-container" style="--delay: ${delay}ms">
+      <div class="link-text text">${prj.title}</div>
+    </a>
     <img src="${prj.image}" alt="${prj.title} image" loading="lazy">
-    <p>${prj.descreption}</p>
-    <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
+    <p class="project-description">${prj.descreption}</p>`;
   } else {
-    projectDiv.innerHTML = `<h3 class="project-title to-reveal" style="--delay: ${delay}ms">${prj.title}</h3>
-    <p>${prj.descreption}</p>
-    <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
+    projectDiv.innerHTML = `
+    <a href="${prj.link}" class="project-title to-reveal link-shadow-container" style="--delay: ${delay}ms">
+      <div class="link-text text">${prj.title}</div>
+    </a>
+    <p class="project-description">${prj.descreption}</p>`;
   }
   return projectDiv;
 }
@@ -77,7 +81,7 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'E-commerce product page',
+    title: 'E-commerce Product Page',
     image: './projects/ecommerce-product-page.jpg',
     descreption: 'An intuitive e-commerce product page showcasing detailed product information, enhanced by a lightbox mode for a better image-viewing experience.',
     link: 'https://aymenthedeveloper.github.io/E-commerce-product-page/',
@@ -85,7 +89,7 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'Interactive to-do app',
+    title: 'Interactive To-Do App',
     image: './projects/todoApp.jpg',
     descreption: 'An interactive to-do app that offers dark/light mode, task filtering by status, and a smooth drag-and-drop feature for reordering. Created with HTML, CSS, and JavaScript.',
     link: 'https://aymenthedeveloper.github.io/todo-app/',
@@ -125,7 +129,7 @@ const projects = [
     displayedIn: ['projects']
   },
   {
-    title: 'Pricing component with toggle',
+    title: 'Pricing Component',
     image: './projects/pricingComponent.jpg',
     descreption: 'A responsive pricing page with a toggle feature that allows users to easly switch between monthly and annual plans. Built using HTML, CSS, and vanilla JavaScript.',
     link: 'https://aymenthedeveloper.github.io/pricing-component-with-toggle/',
@@ -175,41 +179,24 @@ const projects = [
   
 ];
 
-// let lastCall = 0;
-// function handleScroll(){
-//   let now = performance.now();
-//   if (now - lastCall > 100){
-//     const headings = document.querySelectorAll('.to-reveal');
-//     lastCall = now;
-//     let count = 0;
-//     headings.forEach((heading)=>{
-//       const rect = heading.getBoundingClientRect();
-//       const position = rect.top + rect.height;
-//       if (heading.classList.contains('reveal')){
-//         count++
-//         return;
-//       }
-//       if (position < innerHeight){
-//         heading.classList.add('reveal')
-//         count++
-//       }
-//     })
-//     if (count >= headings.length){
-//       window.removeEventListener('scroll', handleScroll)
-//     }
-//   }
-// }
-// window.addEventListener('scroll', handleScroll)
-
 const observer = new IntersectionObserver((entries)=>{
+  let delay = 100;
   entries.forEach(entry => {
-    if (entry.isIntersecting){
-      entry.target.classList.add("reveal")
+    if (entry.isIntersecting && !entry.target.classList.contains('reveal')){
+      console.log(entry.target);
+      setTimeout(()=> entry.target.classList.add('reveal'), delay)
+      delay += 100;
     }
   })
 });
 
 
+function addLinkDelay(e){
+  e.preventDefault();
+  setTimeout(()=>{
+    window.location.href = this.href;
+  }, 150)
+}
 
 
 
@@ -218,4 +205,6 @@ const observer = new IntersectionObserver((entries)=>{
 displayProjects(projects);
 userPreferenceCheck();
 const headings = document.querySelectorAll('.to-reveal');
+const links = document.querySelectorAll('a');
 headings.forEach(heading => observer.observe(heading))
+links.forEach(link => link.addEventListener('click', addLinkDelay))
