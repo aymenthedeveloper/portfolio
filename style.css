@@ -163,6 +163,7 @@ main .hero p b{
   gap: 16px 8px;
   border-block-start: 1px solid var(--bar-clr);
 }
+
 .projects .project:last-child {
   border-block-end: 1px solid var(--bar-clr);
 }
