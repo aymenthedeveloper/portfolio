@@ -12,11 +12,8 @@
   --bar-clr: #232323;
   --border-clr: #333;
   --heading: clamp(2rem, 6.5vw + 1rem, 3.75rem);
-  --sub-heading: clamp(3rem, 7vw + 1rem, 7rem);
-  --fs-h1: clamp(3rem, 7vw + 1rem, 7rem);
-  --fs-h2: clamp(2.25rem, 4vw + 1rem, 3.375rem);
-  --fs-h3: clamp(1.5rem, 2.5vw + 1rem, 1.875rem);  
-  --img-size: 35px;
+  --fs-l: clamp(2rem, 4vw + 1rem, 2.75rem);
+  --fs-m: clamp(1.25rem, 1.25vw + 1rem, 1.75rem);  
 }
 
 :root[data-theme="light"] {
@@ -82,6 +79,7 @@ header {
 
 header .logo {
   cursor: pointer;
+  margin-left: 2px;
 }
 header .logo .text {
   font-size: 2rem;
@@ -131,7 +129,7 @@ main .hero p{
   --reveal-clr: var(--accent-text-clr);
 }
 main .hero p b{
-  font-weight: 400;
+  font-weight: 500;
 }
 
 
@@ -153,35 +151,27 @@ main .hero p b{
   grid-template-columns: 1fr;
 }
 .selected-projects > h2{
-  font-size: var(--fs-h2);
+  font-size: var(--fs-l);
   line-height: 120%;
   margin-block: 0 .5em;
   --duration: 400ms;
 }
 .projects .project {
   position: relative;
-  padding-block: 20px;
+  padding-block: 16px;
+  padding-inline: 2px;
+  gap: 16px 8px;
+  border-block-start: 1px solid var(--bar-clr);
 }
-.projects .project::before,
-.projects .project:nth-last-child(2)::after,
-.projects .project:last-child::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  background-color: var(--bar-clr);
-  top: 0;
-}
-.projects .project:nth-last-child(2)::after,
-.projects .project:last-child::after {
-  inset: auto 0 0 0;
+.projects .project:last-child {
+  border-block-end: 1px solid var(--bar-clr);
 }
 .projects .project .project-title {
   display: block;
-  font-size: var(--fs-h3);
+  font-size: var(--fs-m);
   color: var(--text-clr);
-  margin-block: 0 1rem;
-  font-weight: 600;
+  margin-block: 0 .5em;
+  font-weight: 500;
   box-sizing: border-box;
   --duration: 400ms;
 }
@@ -191,9 +181,9 @@ main .hero p b{
 
 .projects .project .project-description {
   color: var(--accent-text-clr);
+  font-size: 1rem;
   max-width: 60ch;
   margin-block: 0;
-  font-size: .875rem;
 }
 
 .selected-projects .see-all{
@@ -294,9 +284,6 @@ footer p{
 /* media quries */
 
 @media (max-width: 450px) {
-  :root{
-    --fs-h1: clamp(2.5rem, 7vw + 1rem, 5rem);
-  }
   main .hero {
     row-gap: .25rem;
   }
@@ -345,7 +332,8 @@ footer p{
   .projects .project{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    padding-block: 30px;
+    padding-block: 20px;
+    column-gap: 8px;
   }
   .projects .project .project-title{
     grid-column: span 2;
@@ -367,7 +355,6 @@ footer p{
   :root{
     --heading: clamp(5rem, 7vw + 1rem, 7rem);
     --height: 60px;
-    --img-size: 45px;
     --margin: 28px; 
   }
   main .hero p{

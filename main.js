@@ -175,8 +175,7 @@ const projects = [
     link: 'https://aymenthedeveloper.github.io/Tip-calculator-app',
     displayed: false,
     displayedIn: ['projects']
-  }
-  
+  }  
 ];
 
 const observer = new IntersectionObserver((entries)=>{
@@ -190,17 +189,12 @@ const observer = new IntersectionObserver((entries)=>{
   })
 });
 
-
 function addLinkDelay(e){
   e.preventDefault();
   setTimeout(()=>{
     window.location.href = this.href;
   }, 150)
 }
-
-
-
-
 
 displayProjects(projects);
 userPreferenceCheck();
