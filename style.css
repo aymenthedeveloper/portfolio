@@ -175,9 +175,14 @@ main .hero p b{
   font-weight: 500;
   box-sizing: border-box;
   --duration: 400ms;
+  --reveal-clr: var(--text-clr);
 }
 .projects .project .project-title .text{
   width:fit-content;
+}
+.projects .project .project-title .text::after{
+  content: " \1F855";
+  vertical-align: middle;
 }
 
 .projects .project .project-description {
@@ -474,35 +479,36 @@ footer p{
 /* utility classes  */
 .to-reveal{
   position: relative;
-  top: .7em;
-  color: rgba(0, 0, 0, 0);
+  top: .75em;
+  color: rgba(0, 0, 0, 0) !important;
   background-clip: text;
   background-repeat: no-repeat;
   background-size: 100% 0%;
   background-image: linear-gradient(var(--reveal-clr, var(--text-clr)), var(--reveal-clr, var(--text-clr)));
-  filter: blur(2px);
+  filter: blur(3px);
 }
 .to-reveal.reveal{
   animation: show-text var(--duration, 750ms) var(--delay, 0ms) ease forwards;
 }
 @keyframes show-text {
-  80%{
-    filter: blur(0);
+  85%{
+    top: 0;
   }
   100%{ 
     top: 0;
-    background-size: 100% 100%;
     filter: blur(0);
+    background-size: 100% 100%;
   }
 }
 .link-shadow-container{
   overflow: hidden;
+  --distance: 4cap;
 }
 .link-shadow-container .link-text {
-  text-shadow: 0 3cap 0 var(--accent-text-clr);
+  text-shadow: 0 var(--distance) 0 var(--accent-text-clr);
   line-height: 110%;
   transition: all .25s ease;
 }
 .link-shadow-container:hover .link-text{
-  transform: translateY(-3cap);
+  transform: translateY(calc(-1* var(--distance)));
 }

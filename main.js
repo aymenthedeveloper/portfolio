@@ -179,12 +179,9 @@ const projects = [
 ];
 
 const observer = new IntersectionObserver((entries)=>{
-  let delay = 100;
   entries.forEach(entry => {
     if (entry.isIntersecting && !entry.target.classList.contains('reveal')){
-      console.log(entry.target);
-      setTimeout(()=> entry.target.classList.add('reveal'), delay)
-      delay += 100;
+      entry.target.classList.add('reveal')
     }
   })
 });

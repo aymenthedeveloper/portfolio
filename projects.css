@@ -13,7 +13,7 @@
 	.projects .project{
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows:  repeat(3, auto);
+		grid-template-rows:  repeat(2, auto);
 	}
 	.projects .project .project-title{
 		grid-column: span 2;
@@ -30,7 +30,7 @@
 		margin-bottom: 0;
 	}
 }
-@media (min-width: 1024px){
+@media (min-width: 1075px){
 	.bg-pattern .bar:nth-child(3) {
 		width: 20px;
 	}
