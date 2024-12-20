@@ -21,7 +21,7 @@
   --text-clr: black;
   --bar-clr: #d9d9d9;
   --border-clr: #bbb;
-  
+  --invert: 0;
 }
 
 body {
@@ -181,8 +181,16 @@ main .hero p b{
   width:fit-content;
 }
 .projects .project .project-title .text::after{
-  content: " \1F855";
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-image: url(./assets/arrowUpRight.svg);
+  filter: drop-shadow(0 var(--distance) 0 var(--accent-text-clr)) invert(var(--invert, 1));
+  background-size: contain;
+  display: inline-block;
   vertical-align: middle;
+  margin-left: 2px;
+  
 }
 
 .projects .project .project-description {
@@ -278,7 +286,7 @@ footer {
   align-content: center;
   justify-content: center;
   text-align: center;
-  font-size: .75rem;
+  font-size: .875rem;
   color: var(--accent-text-clr);
   border-block-start: 1px solid var(--border-clr, #333);
 }
