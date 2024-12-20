@@ -182,8 +182,8 @@ main .hero p b{
 }
 .projects .project .project-title .text::after{
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 1em;
+  height: 1em;
   background-image: url(./assets/arrowUpRight.svg);
   filter: drop-shadow(0 var(--distance) 0 var(--accent-text-clr)) invert(var(--invert, 1));
   background-size: contain;
