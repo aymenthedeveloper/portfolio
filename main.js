@@ -1,49 +1,47 @@
 const root = document.querySelector(':root');
 const darkModeBtn = document.getElementById('dark-mode-toggle');
 
-darkModeBtn.addEventListener('click', () => {
-  
-  if (root.dataset.theme == "dark") {
-    root.dataset.theme = 'light';
-    localStorage.setItem("prefers-color-scheme", "light")
-  } else {
-    root.dataset.theme = 'dark';
-    localStorage.setItem("prefers-color-scheme", "dark")
-  }
-  darkModeBtn.classList.toggle('light')
-})
-
-function userPreferenceCheck() {
+function persistUserPreference() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: light )')
   const preferedMode = localStorage.getItem('prefers-color-scheme') || 'dark';
-  if (mediaQuery.matches || preferedMode == 'light') {
-    root.dataset.theme = 'light';
-    darkModeBtn.classList.add('light')
-  } else {
-    root.dataset.theme = 'dark';
-    darkModeBtn.classList.remove('light')
-  }
+  root.dataset.theme = (mediaQuery.matches || preferedMode == 'light')? "light": "dark";
 }
 
+function changeTheme(){
+  const theme = root.dataset.theme;
+  const newTheme = theme == "dark"? "light": "dark";
+  root.dataset.theme = newTheme;
+  localStorage.setItem("prefers-color-scheme", newTheme)
+}
 
+function addLinkDelay(e){
+  e.preventDefault();
+  setTimeout(()=>{
+    window.location.href = this.href;
+  }, 150)
+}
 
-function createProjectElement(prj, page, i){
+function create(tag, optionsObj){
+  const element = document.createElement(tag);
+  Object.entries(optionsObj).forEach(entry =>{
+    const [key, value] = entry;
+    element[key] = value
+  })
+  return element;
+}
+
+function createProjectElement(prj, page){
   const projectDiv = document.createElement('div');
-  const delay = 10 * i;
   projectDiv.classList.add('project')
-  if (page == 'projects'){
-    projectDiv.innerHTML = `<h3 class="project-title to-reveal" style="--delay: ${delay}ms">${prj.title}</h3>
-    <img src="${prj.image}" alt="${prj.title} image" loading="lazy">
-    <p>${prj.descreption}</p>
-    <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
-  } else {
-    projectDiv.innerHTML = `<h3 class="project-title to-reveal" style="--delay: ${delay}ms">${prj.title}</h3>
-    <p>${prj.descreption}</p>
-    <a href="${prj.link}" class="demo" target="_blank">See demo</a>`;
-  }
+  projectDiv.innerHTML = `
+  <a href="${prj.link}" class="project-title to-reveal link-shadow-container">
+    <div class="link-text text">${prj.title}</div>
+  </a>
+  ${page == 'projects'? `<img src="${prj.image}" alt="${prj.title} image" loading="lazy">`: ""}
+  <p class="project-description">${prj.descreption}</p>`;
+  projectDiv.querySelector('a').addEventListener('click', addLinkDelay);
   return projectDiv;
 }
-
 
 function displayProjects(projectsList){
   const projectsContainer = document.querySelector('.selected-projects .projects');
@@ -77,7 +75,7 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'E-commerce product page',
+    title: 'E-commerce Product Page',
     image: './projects/ecommerce-product-page.jpg',
     descreption: 'An intuitive e-commerce product page showcasing detailed product information, enhanced by a lightbox mode for a better image-viewing experience.',
     link: 'https://aymenthedeveloper.github.io/E-commerce-product-page/',
@@ -85,7 +83,7 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'Interactive to-do app',
+    title: 'Interactive To-Do App',
     image: './projects/todoApp.jpg',
     descreption: 'An interactive to-do app that offers dark/light mode, task filtering by status, and a smooth drag-and-drop feature for reordering. Created with HTML, CSS, and JavaScript.',
     link: 'https://aymenthedeveloper.github.io/todo-app/',
@@ -125,7 +123,7 @@ const projects = [
     displayedIn: ['projects']
   },
   {
-    title: 'Pricing component with toggle',
+    title: 'Pricing Component',
     image: './projects/pricingComponent.jpg',
     descreption: 'A responsive pricing page with a toggle feature that allows users to easly switch between monthly and annual plans. Built using HTML, CSS, and vanilla JavaScript.',
     link: 'https://aymenthedeveloper.github.io/pricing-component-with-toggle/',
@@ -171,51 +169,23 @@ const projects = [
     link: 'https://aymenthedeveloper.github.io/Tip-calculator-app',
     displayed: false,
     displayedIn: ['projects']
-  }
-  
+  }  
 ];
-
-// let lastCall = 0;
-// function handleScroll(){
-//   let now = performance.now();
-//   if (now - lastCall > 100){
-//     const headings = document.querySelectorAll('.to-reveal');
-//     lastCall = now;
-//     let count = 0;
-//     headings.forEach((heading)=>{
-//       const rect = heading.getBoundingClientRect();
-//       const position = rect.top + rect.height;
-//       if (heading.classList.contains('reveal')){
-//         count++
-//         return;
-//       }
-//       if (position < innerHeight){
-//         heading.classList.add('reveal')
-//         count++
-//       }
-//     })
-//     if (count >= headings.length){
-//       window.removeEventListener('scroll', handleScroll)
-//     }
-//   }
-// }
-// window.addEventListener('scroll', handleScroll)
 
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry => {
-    if (entry.isIntersecting){
-      entry.target.classList.add("reveal")
+    if (entry.isIntersecting && !entry.target.classList.contains('reveal')){
+      entry.target.classList.add('reveal')
     }
   })
 });
 
-
-
-
-
-
-
-displayProjects(projects);
-userPreferenceCheck();
-const headings = document.querySelectorAll('.to-reveal');
-headings.forEach(heading => observer.observe(heading))
+darkModeBtn.addEventListener('click', changeTheme)
+window.addEventListener('DOMContentLoaded', ()=>{
+  persistUserPreference();
+  displayProjects(projects);
+  const headings = document.querySelectorAll('.to-reveal');
+  const links = document.querySelectorAll('a');
+  headings.forEach(heading => observer.observe(heading))
+  document.querySelector('footer .copy .year').textContent = new Date().getFullYear();
+})
