@@ -1,53 +1,47 @@
 const root = document.querySelector(':root');
 const darkModeBtn = document.getElementById('dark-mode-toggle');
 
-darkModeBtn.addEventListener('click', () => {
-  
-  if (root.dataset.theme == "dark") {
-    root.dataset.theme = 'light';
-    localStorage.setItem("prefers-color-scheme", "light")
-  } else {
-    root.dataset.theme = 'dark';
-    localStorage.setItem("prefers-color-scheme", "dark")
-  }
-  darkModeBtn.classList.toggle('light')
-})
-
-function userPreferenceCheck() {
+function persistUserPreference() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: light )')
   const preferedMode = localStorage.getItem('prefers-color-scheme') || 'dark';
-  if (mediaQuery.matches || preferedMode == 'light') {
-    root.dataset.theme = 'light';
-    darkModeBtn.classList.add('light')
-  } else {
-    root.dataset.theme = 'dark';
-    darkModeBtn.classList.remove('light')
-  }
+  root.dataset.theme = (mediaQuery.matches || preferedMode == 'light')? "light": "dark";
 }
 
+function changeTheme(){
+  const theme = root.dataset.theme;
+  const newTheme = theme == "dark"? "light": "dark";
+  root.dataset.theme = newTheme;
+  localStorage.setItem("prefers-color-scheme", newTheme)
+}
 
+function addLinkDelay(e){
+  e.preventDefault();
+  setTimeout(()=>{
+    window.location.href = this.href;
+  }, 150)
+}
 
-function createProjectElement(prj, page, i){
+function create(tag, optionsObj){
+  const element = document.createElement(tag);
+  Object.entries(optionsObj).forEach(entry =>{
+    const [key, value] = entry;
+    element[key] = value
+  })
+  return element;
+}
+
+function createProjectElement(prj, page){
   const projectDiv = document.createElement('div');
-  const delay = 10 * i;
   projectDiv.classList.add('project')
-  if (page == 'projects'){
-    projectDiv.innerHTML = `
-    <a href="${prj.link}" class="project-title to-reveal link-shadow-container" style="--delay: ${delay}ms">
-      <div class="link-text text">${prj.title}</div>
-    </a>
-    <img src="${prj.image}" alt="${prj.title} image" loading="lazy">
-    <p class="project-description">${prj.descreption}</p>`;
-  } else {
-    projectDiv.innerHTML = `
-    <a href="${prj.link}" class="project-title to-reveal link-shadow-container" style="--delay: ${delay}ms">
-      <div class="link-text text">${prj.title}</div>
-    </a>
-    <p class="project-description">${prj.descreption}</p>`;
-  }
+  projectDiv.innerHTML = `
+  <a href="${prj.link}" class="project-title to-reveal link-shadow-container">
+    <div class="link-text text">${prj.title}</div>
+  </a>
+  ${page == 'projects'? `<img src="${prj.image}" alt="${prj.title} image" loading="lazy">`: ""}
+  <p class="project-description">${prj.descreption}</p>`;
+  projectDiv.querySelector('a').addEventListener('click', addLinkDelay);
   return projectDiv;
 }
-
 
 function displayProjects(projectsList){
   const projectsContainer = document.querySelector('.selected-projects .projects');
@@ -186,16 +180,12 @@ const observer = new IntersectionObserver((entries)=>{
   })
 });
 
-function addLinkDelay(e){
-  e.preventDefault();
-  setTimeout(()=>{
-    window.location.href = this.href;
-  }, 150)
-}
-
-displayProjects(projects);
-userPreferenceCheck();
-const headings = document.querySelectorAll('.to-reveal');
-const links = document.querySelectorAll('a');
-headings.forEach(heading => observer.observe(heading))
-links.forEach(link => link.addEventListener('click', addLinkDelay))
+darkModeBtn.addEventListener('click', changeTheme)
+window.addEventListener('DOMContentLoaded', ()=>{
+  persistUserPreference();
+  displayProjects(projects);
+  const headings = document.querySelectorAll('.to-reveal');
+  const links = document.querySelectorAll('a');
+  headings.forEach(heading => observer.observe(heading))
+  document.querySelector('footer .copy .year').textContent = new Date().getFullYear();
+})
