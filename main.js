@@ -59,6 +59,14 @@ function displayProjects(projectsList){
 };
 const projects = [
   {
+    title: 'Multi-step Form',
+    image: './projects/multiStepForm.jpg',
+    descreption: 'A React app styled with Tailwind CSS v4 featuring a modern, intuitive signup form for gamers. Users complete a four-step flow: entering info, selecting a plan, adding extras, and reviewing a final summary before checkout.',
+    link: 'https://multi-step-form-black-five.vercel.app/',
+    displayed: true,
+    displayedIn: ['projects', 'home']
+  },
+  {
     title: 'Job list with filter',
     image: './projects/jobListing.jpg',
     descreption: 'This React app provides a modern and minimal platform for browsing job listings. Users can filter jobs dynamically by keywords, enabling a seamless search experience tailored to their skills and interests.',
@@ -83,20 +91,20 @@ const projects = [
     displayedIn: ['projects', 'home']
   },
   {
-    title: 'Interactive To-Do App',
-    image: './projects/todoApp.jpg',
-    descreption: 'An interactive to-do app that offers dark/light mode, task filtering by status, and a smooth drag-and-drop feature for reordering. Created with HTML, CSS, and JavaScript.',
-    link: 'https://aymenthedeveloper.github.io/todo-app/',
-    displayed: true,
-    displayedIn: ['projects', 'home']
-  },
-  {
     title: 'Product List with Cart',
     image: './projects/product-list-with-cart.jpg',
     descreption: 'A dynamic shopping list app that lets you add and remove products, confirm your order, and view the total amount. Built with HTML, CSS, and JavaScript.',
     link: 'https://aymenthedeveloper.github.io/product-list-with-cart/',
     displayed: true,
     displayedIn: ['projects', 'home']
+  },
+  {
+    title: 'Interactive To-Do App',
+    image: './projects/todoApp.jpg',
+    descreption: 'An interactive to-do app that offers dark/light mode, task filtering by status, and a smooth drag-and-drop feature for reordering. Created with HTML, CSS, and JavaScript.',
+    link: 'https://aymenthedeveloper.github.io/todo-app/',
+    displayed: true,
+    displayedIn: ['projects']
   },
   {
     title: 'Interactive Card Form',
@@ -127,7 +135,7 @@ const projects = [
     image: './projects/pricingComponent.jpg',
     descreption: 'A responsive pricing page with a toggle feature that allows users to easly switch between monthly and annual plans. Built using HTML, CSS, and vanilla JavaScript.',
     link: 'https://aymenthedeveloper.github.io/pricing-component-with-toggle/',
-    displayed: true,
+    displayed: false,
     displayedIn: ['projects']
   },
   {
